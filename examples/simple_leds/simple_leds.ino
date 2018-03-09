@@ -33,13 +33,19 @@ void setup() {
   delay(10);
 
   strip.show();
+
+  randomSeed(analogRead(0));
 }
 
 void loop() {
-  const int pause = 50;
+  const int pause = 33;
+
+  uint8_t r = random(200);
+  uint8_t g = random(200);
+  uint8_t b = random(200);
 
   for (int i = 0; i < NUM_LEDS; i++) {
-    strip.setPixelColor(i, strip.Color(0, 150, 0));
+    strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
 
     delay(pause);

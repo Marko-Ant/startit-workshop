@@ -48,23 +48,21 @@ void setup() {
   delay(10);
   strip.show();
 
+  // setup serial
   Serial.begin(115200);
   delay(10);
 
-  // Connect to WiFi
+  // setup the example
   setupWiFi();
   setupDevice();
 }
 
 // called in a loop. This is your main loop!
 void loop() {
-
   // signal device to process any incomming messages
   device.process();
 
-
   // TODO: you can implement any logic that requires looping here
-
   delay(16);
 }
 
@@ -135,7 +133,7 @@ void callback(char* t, byte* payload, unsigned int length) {
 }
 
 void handleCommand(String assetName, JsonObject &payload) {
-  if (assetName == "Color") {
+  if (assetName == "color") {
     uint8_t r = payload["r"];
     uint8_t g = payload["g"];
     uint8_t b = payload["b"];
